@@ -1,5 +1,5 @@
 apiKeys:
-  telegram: "5286234589:AAFlkQObco_9UBbyFplKJjJxe6Ojiri6dEQ"
+  telegram: "secret"
 
 database:
   name: "CGKdb"
