@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+option go_package = "2bot/api";
+
+import "google/api/annotations.proto";
+
+package api;
+
+message NewUserWrite {
+    int64 id = 1;
+    string username = 2;
+}
+
+message NewUserRead {
+    bool successfully = 1;
+}
+
+message QuestionWrite {
+    int64 chat_id = 1;
+}
+
+message QuestionRead {
+    bool successfully = 1;
+    int64 chat_id = 2;
+    string question = 3;
+}
+
+message AnswerWrite {
+    int64 chat_id = 1;
+    string answer = 2;
+}
+
+message AnswerRead {
+    bool successfully = 1;
+    int64 chat_id = 2;
+    bool correct = 3;
+}
+
+message LeaderboardWrite {}
+
+message Leader {
+    string username = 1;
+    int32 cnt = 2;
+}
+
+message LeaderboardRead {
+    bool successfully = 1;
+    repeated Leader leaders = 2;
+}
+
+service BotApi {
+    rpc SetNewUser(NewUserWrite) returns (NewUserRead) {
+        option (google.api.http) = {
+            get: "/setNewUser/{id}/{username}"
+        };
+    }
+    rpc GetQuestion(QuestionWrite) returns (QuestionRead) {
+        option (google.api.http) = {
+            get: "/getQuestion/{chat_id}"
+        };
+    }
+    rpc PostAnswer(AnswerWrite) returns (AnswerRead) {
+        option (google.api.http) = {
+            get: "/postAnswer/{chat_id}/{answer}"
+        };
+    }
+    rpc GetLeaderboard(LeaderboardWrite) returns (LeaderboardRead) {
+        option (google.api.http) = {
+            post: "/GetLeaderboard"
+        };
+    }
+}

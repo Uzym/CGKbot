@@ -1,0 +1,7 @@
+apiKeys:
+  telegram: "5286234589:AAFlkQObco_9UBbyFplKJjJxe6Ojiri6dEQ"
+
+database:
+  name: "CGKdb"
+  user: "postgres"
+  password: "1290"
